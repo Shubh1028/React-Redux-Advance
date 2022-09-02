@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialCartState = { isHidden: false};
+const initialCartState = { isHidden: false, notification: null};
 
 const cartShowHideSlice = createSlice({
     name: "cartVisible",
@@ -8,6 +8,13 @@ const cartShowHideSlice = createSlice({
     reducers: {
         activateVisibility(state) {
             state.isHidden = !state.isHidden;
+        },
+        showNotification(state,action) {
+            state.notification = {
+                status: action.payload.status,
+                title: action.payload.title,
+                message: action.payload.message
+            }
         }
     }
 });
